@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: bhrama_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - bhrama_db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - bhrama_bridge
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - bhrama_bridge
+
+volumes:
+  bhrama_db:
+
+networks:
+  bhrama_bridge:
+    driver: bridge

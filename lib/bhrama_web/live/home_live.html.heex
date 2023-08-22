@@ -1,0 +1,72 @@
+<div class="flex flex-col flex-grow w-full shadow-md rounded-t-lg overflow-hidden bg-slate-800 shadow-slate-600">
+	<div class="flex flex-col flex-grow p-4 overflow-auto max-h-[80vh]">
+	  <div class="flex w-full mt-2 space-x-3 max-w-xl">
+		<img
+		  class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"
+		  src="https://images.unsplash.com/photo-1589254065878-42c9da997008?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+		  alt=""
+		/>
+		<div>
+		  <div class="bg-gray-300 text-slate-900 p-3 rounded-r-lg rounded-bl-lg">
+			<p class="text-sm"><%= as_html("<p>Hi. I am AI based Tutor Mr. Brahma, how can I help you learn today?</p>") %></p>
+		  </div>
+		  <span class="text-xs text-gray-500 leading-none">Now</span>
+		</div>
+	  </div>
+	  <%= for message <- Enum.reverse(@messages) do %>
+		<div
+		  id={"message-#{message.id}"}
+		  phx-mounted={JS.dispatch("scrollIntoView", to: "#message-#{message.id}")}
+		>
+		  <div
+			:if={message.role == "user"}
+			class="flex w-full mt-2 space-x-3 max-w-2xl ml-auto justify-end"
+		  >
+			<div>
+			  <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
+				<p class="text-sm"><%= message.content %></p>
+			  </div>
+			  <span class="text-xs text-gray-500 leading-none">Now</span>
+			</div>
+			<img
+			  class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"
+			  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+			  alt=""
+			/>
+		  </div>
+
+		  <div :if={message.role == "assistant"} class="flex w-full mt-2 space-x-3 max-w-2xl">
+			<img
+			  class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"
+			  src="https://images.unsplash.com/photo-1589254065878-42c9da997008?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+			  alt=""
+			/>
+			<div>
+			  <div class="bg-gray-300 text-slate-900 p-3 rounded-r-lg rounded-bl-lg">
+				<p class="text-sm"><%= as_html(message.content) %></p>
+			  </div>
+			  <span class="text-xs text-gray-500 leading-none">Now</span>
+			</div>
+		  </div>
+		</div>
+	  <% end %>
+	</div>
+
+	<%= if @typing == true do %>
+		<div class="flex items-center">
+			<p class="text-left pl-5 p-2 text-white-100">Mr Bhrama is typing</p>
+			<span>
+				<CoreComponents.icon name="hero-chat-bubble-left-ellipsis" class="w-6 h-6 animate-bounce" />
+			</span>
+		</div>
+	<% end %>
+
+	<div class="bg-gray-300 p-4">
+	  <.live_component
+		module={BhramaWeb.ChatbotLive.FormComponent}
+		id="new-message"
+		conversation={@conversation}
+		message={@message}
+	  />
+	</div>
+  </div>
