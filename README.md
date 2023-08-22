@@ -3,7 +3,7 @@
 To start your Phoenix server:
 
   * Run `docker compose up -d` in deamon mode for booting up PostGres DB
-  * `export OPENAI_API_KEY="YOUR_OPEN_AI_KEY"`
+  * `export OPENAI_API_KEY="YOUR_OPEN_AI_KEY"` - Should be GPT-4 based for optimal response.
   * Run `mix setup` to install and setup dependencies
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
