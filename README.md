@@ -1,4 +1,15 @@
-# Bhrama
+# Mr Bhrama - The AI Tutor Bot
+
+I trust you're all enjoying the influx of exciting technologies. I'm thrilled to unveil the result of a recent hackathon endeavor – a project I developed in just around 7-8 hours. This creation synergizes the capabilities of generative AI with the realm of education.
+
+It's a bot using GPT-4 model, integrated with Phoenix (Elixir language based framework) backed by PostgreSQL. It is tailored to assist high-school students, from grade levels 1 to 12, as well as those pursuing engineering degrees, its all the game of setting the right depth using simplest prompt engineering patterns.
+
+You can see a quick demo:
+https://github.com/tkant/mr-bhrama/assets/11471896/4c515c75-9bde-4536-90b7-69e1bbad4e9b
+
+The system can be run locally or deployed on https://fly.io by following the instructions in the README.md. The endpoint, `/chat/:ANY_USER_NAME:?class=[:DEPTH:]`, accommodates a range of interactions, covering classes from 1 to 12, as well as academic levels like "undergraduate," "graduate," and beyond. It retains the context of the user's identity and their current educational focus, ensuring alignment with their age or curriculum level.
+
+Special thanks to - https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor
 
 To start your Phoenix server:
 
