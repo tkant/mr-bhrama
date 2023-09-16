@@ -4,7 +4,7 @@ I trust you're all enjoying the influx of exciting technologies. I'm thrilled to
 
 It's a bot using GPT-4 model, integrated with Phoenix (Elixir language based framework) backed by PostgreSQL. It is tailored to assist high-school students, from grade levels 1 to 12, as well as those pursuing engineering degrees, its all the game of setting the right depth using simplest prompt engineering patterns.
 
-You can see a quick demo:
+## Demo
 
 https://github.com/tkant/mr-bhrama/assets/11471896/4c515c75-9bde-4536-90b7-69e1bbad4e9b
 
@@ -12,9 +12,12 @@ The system can be run locally or deployed on https://fly.io by following the ins
 
 Special thanks to - https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor
 
+## Running Locally
+
 To start your Phoenix server:
 
   * Run `docker compose up -d` in deamon mode for booting up PostGres DB
+  * Get your OPEN-AI Key, remember to use the GPT-4 version
   * `export OPENAI_API_KEY="YOUR_OPEN_AI_KEY"` - Should be GPT-4 based for optimal response.
   * Run `mix setup` to install and setup dependencies
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
